@@ -1,0 +1,17 @@
+{
+  "auth": "zef:arunvickram",
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "A library to facilitate using monetary values in Raku",
+  "name": "Moneys",
+  "provides": {
+    "Money": "lib/Moneys.rakumod"
+  },
+  "resources": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
