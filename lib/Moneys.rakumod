@@ -1,43 +1,24 @@
 unit module Moneys;
 
+constant @currencies-that-use-dollar-sign = <
+  USD AUD CAD BSD BZD BSD BMD BND KYD XCD FJD GYD HKD JMD
+  KID LRD NAD SGD SBD SRD TWD TTD TVD WST TOP MOP NIO ARS
+  CLP UYU MXN BRL
+>;
+
 constant %prefix-currency-sigils = {
-    # currencies named dollar
-    'USD' => '$',
-    'AUD' => '$',
-    'CAD' => '$',
-    'BSD' => '$',
-    'BZD' => '$',
-    'BSD' => '$',
-    'BMD' => '$',
-    'BND' => '$',
-    'KYD' => '$',
-    'XCD' => '$',
-    'FJD' => '$',
-    'GYD' => '$',
-    'HKD' => '$',
-    'JMD' => '$',
-    'KID' => '$',
-    'LRD' => '$',
-    'NAD' => '$',
-    'SGD' => '$',
-    'SBD' => '$',
-    'SRD' => '$',
-    'TWD' => '$',
-    'TTD' => '$',
-    'TVD' => '$',
-
-    # Pesos use the dollar sign too
-    # TODO: add more
-    'MXN' => '$',
-
-    # Brazilian real uses dollar sign
-    'BRL' => '$',
-
-    # Currencies named pound or similar (excluding the Turkish Lira)
-    'GBP' => '£',
-
-    'EUR' => '€',
-
+  any(@currencies-that-use-dollar-sign) => '$',
+  'AMD' => '֏',
+  'AZN' => '₼',
+  'CRC' => '₡',
+  'GBP' => '£',
+  'GEL' => '₾',
+  'EUR' => '€',
+  'KRW' => '₩',
+  'MNT' => '₮',
+  'RUB' => '₽',
+  'TRY' => '₺',
+  'JPY'|'RMB' => '¥',
 }
 
 my token currency-sign { <[\$€£]> }
