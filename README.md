@@ -10,7 +10,7 @@ houses `amount` and `currency` information.
 
 Constructing a new `Money` is *very* straightforward
 
-```perl6
+```raku
 my $money = Money.new(amount => 1.0, currency => 'USD'); # constructing a money value
 my $money = Money.new: :amount(1.0), :currency<USD>;
 my $money = Money.new(1.0, 'USD'); # arguments can also be positional
@@ -30,7 +30,7 @@ with Money.new('$1.00 USD') -> $money {
 
 Again, relatively straightforward:
 
-```perl6
+```raku
 my $money-a = Money.new(5.00, 'USD');
 my $money-b = Money.new(1.00, 'USD');
 
@@ -41,7 +41,7 @@ my $money-d = $money-a - $money-b; # => Money.new(4.00, 'USD')
 However, when doing arithmetic operations with two `Money`s, you're probably going to want to
 do this:
 
-```perl6
+```raku
 my $money-a = Money.new(5.00, 'USD');
 my $money-b = Money.new(1.00, 'CAD');
 
