@@ -1,8 +1,8 @@
-# Money
+# Moneys
 
 [![Hippocratic License HL3-BDS-CL-ECO-EXTR-FFD-LAW-MEDIA-MIL-MY-SOC-SUP-SV-TAL-USTA-XUAR](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-BDS-CL-ECO-EXTR-FFD-LAW-MEDIA-MIL-MY-SOC-SUP-SV-TAL-USTA-XUAR&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/bds-cl-eco-extr-ffd-law-media-mil-my-soc-sup-sv-tal-usta-xuar.html)
 
-`Money` is a library that's meant to be an easy-to-use, relatively safe way of 
+`Moneys` is a library that's meant to be an easy-to-use, relatively safe way of 
 handling monetary values in the Raku language. It provides a simple `class Money` that
 houses `amount` and `currency` information.
 
