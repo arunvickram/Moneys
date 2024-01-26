@@ -6,7 +6,7 @@
   ],
   "description": "A library to facilitate using monetary values in Raku",
   "name": "Moneys",
-  "source-url": "https://github.com/arunvickram/Moneys",
+  "source-url": "https://github.com/arunvickram/Moneys.git",
   "provides": {
     "Money": "lib/Moneys.rakumod"
   },
