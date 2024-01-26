@@ -51,4 +51,9 @@ with $money-a + $money-b -> $money-c {
     # handle the error
 }
 ```
+## Non-goals
 
+* **Currency conversion** - in order for this library to remain consistent and safe when handling conversion,
+we won't be handling any form of conversion.
+
+* **Cryptocurrencies** - we won't be integrating with cryptocurrencies.
