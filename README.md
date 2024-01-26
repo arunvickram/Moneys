@@ -9,9 +9,11 @@ houses `amount` and `currency` information.
 
 ## Construction
 
-Constructing a new `Money` is *very* straightforward
+Constructing a new `Money` is *very* straightforward:
 
 ```raku
+use Moneys;
+
 my $money = Money.new(amount => 1.0, currency => 'USD'); # constructing a money value
 my $money = Money.new: :amount(1.0), :currency<USD>;
 my $money = Money.new(1.0, 'USD'); # arguments can also be positional
