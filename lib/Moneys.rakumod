@@ -54,6 +54,14 @@ class Money is export {
         self.bless(:$amount, :$currency)
     }
 
+    multi method new(Int :$amount, Str :$currency) {
+        self.bless(:amount($amount / 1.0), $currency)
+    }
+
+    multi method new(Int $amount, Str $currency) {
+        self.bless(:amount($amount / 1.0), :$currency)
+    }
+
     multi method abs {
         Money.new($!amount.abs, $!currency)
     }
@@ -95,6 +103,10 @@ multi sub infix:<+>(Money $a, Money $b) is export {
 }
 
 multi sub infix:<+>(Money $a, Rat $b) is export {
+    Money.new(amount => $a.amount + $b, currency => $a.currency);
+}
+
+multi sub infix:<+>(Money $a, Int $b) is export {
     Money.new(amount => $a.amount + $b, currency => $a.currency);
 }
 
