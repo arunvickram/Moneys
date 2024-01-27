@@ -27,6 +27,17 @@ with Money.new('$1.00 USD') -> $money {
 } else {
     # handle errors as needed
 }
+
+
+```
+
+If you add the `:ALL` pragma to `use Moneys` clause, you get postfix constructors for each and every currency that you can use:
+```raku
+use Moneys :ALL; 
+
+
+my $money = 100.0USD;
+my $money = 7.0AED; 
 ```
 
 ## Operations
