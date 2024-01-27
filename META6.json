@@ -8,7 +8,7 @@
   "name": "Moneys",
   "source-url": "https://github.com/arunvickram/Moneys.git",
   "provides": {
-    "Money": "lib/Moneys.rakumod"
+    "Moneys": "lib/Moneys.rakumod"
   },
   "resources": [
   ],
