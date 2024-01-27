@@ -2,13 +2,14 @@ use Test;
 
 use-ok "Moneys";
 
-use Moneys;
+use Moneys :ALL;
 
 my $m1 = Money.new(1.0, 'USD');
 my $m2 = Money.new(2.0, 'USD');
 my $m3 = Money.new(1.0, 'INR');
 my $m4 = Money.new(50, 'CAD');
 
+my $m5 = 50.0CAD;
 
 ok ($m1 + $m2) eqv Money.new(3.0, 'USD'), "$m1 + $m2 eqv $(Money.new(3.0, 'USD'))";
 ok ($m1 + 1.0) eqv Money.new(2.0, 'USD'), "$m1 + 1.0 eqv $(Money.new(2.0, 'USD'))";
@@ -19,9 +20,11 @@ ok ($m2 - 1.0) eqv Money.new(1.0, 'USD'), "$m2 - 1.0 eqv $(Money.new(1.0, 'USD')
 ok ($m1 * 5.0) eqv Money.new(5.0, 'USD'), 'multiplication is off';
 ok ($m4 / 5.0) eqv Money.new(10.0, 'CAD'), 'division is off';
 
-ok "$m1" eq '$1.00 USD', "gist/Str doen't properly produce nice output, produced $m1";
-ok "$m2" eq '$2.00 USD', "gist/Str doen't properly produce nice output, produced $m2";
-ok "$m3" eq '1.00 INR', "gist/Str doen't properly produce nice output, produced $m3";
+ok "$m1" eq '$1.00 USD', "gist/Str properly produces nice output, produced $m1";
+ok "$m2" eq '$2.00 USD', "gist/Str properly produces nice output, produced $m2";
+ok "$m3" eq '1.00 INR', "gist/Str properly produces nice output, produced $m3";
+
+ok "$m5" eq '$50.00 CAD', "postfix constructor creates money";
 
 ok Money.new('$1.00 USD') eqv Money.new(1.00, 'USD'), "regex doesn't properly parse decimal values $(Money.new('$1.00 USD'))";
 
