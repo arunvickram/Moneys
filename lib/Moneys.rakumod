@@ -3,7 +3,7 @@ use v6.d;
 unit module Moneys;
 
 # TODO: Finish up expanding the currency info to contain currency information
-class Currency is Enumeration {
+class Currency is Enumeration is export {
   my %currency-info = (
     AED => (
       :name<United Arab Emirates Dirham>
