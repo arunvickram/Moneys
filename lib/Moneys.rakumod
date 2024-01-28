@@ -4,7 +4,7 @@ unit module Moneys;
 
 # TODO: Finish up expanding the currency info to contain currency information
 class Currency is Enumeration {
-  our %currency-info = (
+  my %currency-info = (
     AED => (
       :name<United Arab Emirates Dirham>
     ),
