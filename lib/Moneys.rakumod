@@ -3,408 +3,409 @@ use v6.d;
 unit module Moneys;
 
 # TODO: Finish up expanding the currency info to contain currency information
-class Currency is export does Enumeration {
-  my %currency-info = (
-    AED => (
+class Currency is export does Enumeration does Callable {
+  our %currency-info = %(
+    AED => %(
       :name<United Arab Emirates Dirham>
     ),
-    AFN => (
+    AFN => %(
       :name<Afghan Afghani>
-      :symbols(:default(:text<Afs. >, :position<before>)),
+      :symbols{:default{:text<Afs. >, :position<before>}},
     ),
-    ALL => (
+    ALL => %(
       :name<Albanian Lek>
     ),
-    AMD => (
+    AMD => %(
       :name<Armenian Dram>
-      :symbols(:default(:text<֏>, :position<before>)),
+      :symbols{:default{:text<֏>, :position<before>}},
     ),
-    ANG => (
+    ANG => %(
       :name<Netherlands Antillean Guilder>
-      :symbols(:default(:text<ƒ>, :position<before>)),
+      :symbols{:default{:text<ƒ>, :position<before>}},
     ),
-    ARS => (
+    ARS => %(
       :name<Argentine Peso>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    AUD => (
+    AUD => %(
       :name<Australian Dollar>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    AWG => (
+    AWG => %(
       :name<Aruban Florin>
-      :symbols(:default(:text<Afl. >, :position<before>)),
+      :symbols{:default{:text<Afl. >, :position<before>}},
     ),
-    AZN => (
+    AZN => %(
       :name<Azerbaijani Manat>
-      :symbols(:default(:text<₼>, :position<before>)),
+      :symbols{:default{:text<₼>, :position<before>}},
     ),
-    BAM => (
+    BAM => %(
       :name<Bosnia-Herzegovina Convertible Mark>
-      :symbols(:default(:text<KM >, :position<before>)),
+      :symbols{:default{:text<KM >, :position<before>}},
     ),
-    BDT => (
+    BDT => %(
       :name<Bangladeshi Taka>
-      :symbols(:default(:text<৳>, :position<before>)),
+      :symbols{:default{:text<৳>, :position<before>}},
     ),
-    BGN => (
+    BGN => %(
       :name<Bulgarian Lev>
     ),
-    BHD => (
+    BHD => %(
       :name<Bahraini Dinar>
     ),
-    BND => (
+    BND => %(
       :name<Brunei Dollar>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    BOB => (
+    BOB => %(
       :name<Bolivian Boliviano>
-      :symbols(:default(:text<Bs>, :position<before>)),
+      :symbols{:default{:text<Bs>, :position<before>}},
     ),
-    BRL => (
+    BRL => %(
       :name<Brazilian Real>
-      :symbols(:default(:text<R$>, :position<before>)),
+      :symbols{:default{:text<R$>, :position<before>}},
     ),
-    BTN => (
+    BTN => %(
       :name<Bhutanese Ngultrum>
     ),
-    BWP => (
+    BWP => %(
       :name<Botswanan Pula>
     ),
-    BYN => (
+    BYN => %(
       :name<Belarusian Ruble>
     ),
-    BZD => (
+    BZD => %(
       :name<Belize Dollar>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    CAD => (
+    CAD => %(
       :name<Canadian Dollar>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    CHF => (
+    CHF => %(
       :name<Swiss Franc>
     ),
-    CLP => (
+    CLP => %(
       :name<Chilean Peso>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    CNY => (
+    CNY => %(
       :name<Chinese Yuan>
-      :symbols(:default(:text<¥>, :position<before>))
+      :symbols{:default{:text<¥>, :position<before>}}
     ),
-    COP => (
+    COP => %(
       :name<Colombian Peso>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    CRC => (
+    CRC => %(
       :name<Costa Rican Colón>,
-      :symbols(:default(:text<₡>, :position<before>)),
+      :symbols{:default{:text<₡>, :position<before>}},
     ),
-    CVE => (
+    CVE => %(
       :name<Cape Verdean Escudo>
     ),
-    DKK => (
+    DKK => %(
       :name<Danish Krone>,
     ),
-    DOP => (
+    DOP => %(
       :name<Dominican Peso>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    DZD => (
+    DZD => %(
       :name<Algerian Dinar>,
     ),
-    EGP => (
+    EGP => %(
       :name<Egyptian Pound>,
     ),
-    EUR => (
+    EUR => %(
       :name<Euro>,
-      :symbols(:default(:text<€>, :position<before>)),
+      :symbols{:default{:text<€>, :position<before>}},
     ),
-    FJD => (
+    FJD => %(
       :name<Fijian Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    GBP => (
+    GBP => %(
       :name<British Pound Sterling>,
-      :symbols(:default(:text<£>, :position<before>)),
+      :symbols{:default{:text<£>, :position<before>}},
     ),
-    GEL => (
+    GEL => %(
       :name<Georgian Lari>,
-      :symbols(:default(:text<₾>, :position<before>)),
+      :symbols{:default{:text<₾>, :position<before>}},
     ),
-    GHS => (
+    GHS => %(
       :name<Ghanaian Cedi>,
-      :symbols(:default(:text<GH₵>, :position<before>))
+      :symbols{:default{:text<GH₵>, :position<before>}}
     ),
-    HKD => (
+    HKD => %(
       :name<Hong Kong Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    HNL => (
+    HNL => %(
       :name<Honduran Lempira>,
-      :symbols(:default(:text<L>, :position<before>)),
+      :symbols{:default{:text<L>, :position<before>}},
     ),
-    HRK => (
+    HRK => %(
       :name<Croatian Kuna>,
-      :symbols(:default(:text< kn>, :position<after>))
+      :symbols{:default{:text< kn>, :position<after>}}
     ),
-    HUF => (
+    HUF => %(
       :name<Hungarian Forint>,
-      :symbols(:default(:text< Ft>, :position<after>))
+      :symbols{:default{:text< Ft>, :position<after>}}
     ),
-    IDR => (
+    IDR => %(
       :name<Indonesian Rupiah>,
-      :symbols(:default(:text<Rp>, :position<before>))
+      :symbols{:default{:text<Rp>, :position<before>}}
     ),
-    ILS => (
+    ILS => %(
       :name<Israeli New Sheqel>,
-      :symbols(:default(:text<₪>, :position<before>)),
+      :symbols{:default{:text<₪>, :position<before>}},
     ),
-    INR => (
+    INR => %(
       :name<Indian Rupee>,
-      :symbols(
-        :default(:text<₹>, :position<before>),
-        :bengali(:text<৳>, :position<before>),
-        :tamil(:text<௹. >, :position<before>),
-      )
+      :symbols{
+        :default{:text<₹>, :position<before>},
+        :bengali{:text<৳>, :position<before>},
+        :tamil{:text<௹. >, :position<before>},
+      }
     ),
-    IQD => (
+    IQD => %(
       :name<Iraqi Dinar>,
     ),
-    ISK => (
+    ISK => %(
       :name<Icelandic Króna>,
-      :symbols(:default(:text< kr>, :position<after>)),
+      :symbols{:default{:text< kr>, :position<after>}},
     ),
-    JMD => (
+    JMD => %(
       :name<Jamaican Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    JOD => (
+    JOD => %(
       :name<Jordanian Dinar>,
     ),
-    JPY => (
+    JPY => %(
       :name<Japanese Yen>,
-      :symbols(
-        :default(:text<¥>, :position<before>),
-        :native(:text<円>, :position<before>)
-      )
+      :symbols{
+        :default{:text<¥>, :position<before>},
+        :native{:text<円>, :position<before>}
+      }
     ),
-    KES => (
+    KES => %(
       :name<Kenyan Shilling>,
     ),
-    KGS => (
+    KGS => %(
       :name<Kyrgystani Som>,
     ),
-    KHR => (
+    KHR => %(
       :name<Cambodian Riel>,
-      :symbols(:default(:text<៛>, :position<after>))
+      :symbols{:default{:text<៛>, :position<after>}}
     ),
-    KRW => (
+    KRW => %(
       :name<South Korean Won>,
-      :symbols(:default(:text<₩>, :position<before>))
+      :symbols{:default{:text<₩>, :position<before>}}
     ),
-    KWD => (
+    KWD => %(
       :name<Kuwaiti Dinar>,
     ),
-    KYD => (
+    KYD => %(
       :name<Cayman Islands Dollar>,
     ),
-    KZT => (
+    KZT => %(
       :name<Kazakhstani Tenge>,
-      :symbols(:default(:text< ₸>, :position<after>)) # don't delete before symbol
+      :symbols{:default{:text< ₸>, :position<after>}} # don't delete before symbol
+
     ),
-    LAK => (
+    LAK => %(
       :name<Laotian Kip>,
-      :symbols(:default(:text<₭>, :position<before>)),
+      :symbols{:default{:text<₭>, :position<before>}},
     ),
-    LBP => (
+    LBP => %(
       :name<Lebanese Pound>,
     ),
-    LKR => (
+    LKR => %(
       :name<Sri Lankan Rupee>,
-      :symbols(:default(:text<Rs. >, :position<before>)),
+      :symbols{:default{:text<Rs. >, :position<before>}},
     ),
-    LTL => (
+    LTL => %(
       :name<Lithuanian Litas>,
     ),
-    MAD => (
+    MAD => %(
       :name<Moroccan Dirham>,
     ),
-    MDL => (
+    MDL => %(
       :name<Moldovan Leu>,
     ),
-    MKD => (
+    MKD => %(
       :name<Macedonian Denar>,
     ),
-    MMK => (
+    MMK => %(
       :name<Myanma Kyat>,
     ),
-    MNT => (
+    MNT => %(
       :name<Mongolian Togrog>,
-      :symbols(:default(:text<₮>, :position<before>))
+      :symbols{:default{:text<₮>, :position<before>}}
     ),
-    MOP => (
+    MOP => %(
       :name<Macanese Pataca>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    MUR => (
+    MUR => %(
       :name<Mauritian Rupee>,
-      :symbols(:default(:text<Rs. >, :position<before>, :single<Re. >)),
+      :symbols{:default{:text<Rs. >, :position<before>, :single<Re. >}},
     ),
-    MVR => (
+    MVR => %(
       :name<Maldivian Rufiyaa>,
-      :symbols(:default(:text<Rf. >, :position<before>)),
+      :symbols{:default{:text<Rf. >, :position<before>}},
     ),
-    MXN => (
+    MXN => %(
       :name<Mexican Peso>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    MYR => (
+    MYR => %(
       :name<Malaysian Ringgit>,
-      :symbols(:default(:text<RM>, :position<before>)),
+      :symbols{:default{:text<RM>, :position<before>}},
     ),
-    NAD => (
+    NAD => %(
       :name<Namibian Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    NGN => (
+    NGN => %(
       :name<Nigerian Naira>,
-      :symbols(:default(:text<₦>, :position<before>)),
+      :symbols{:default{:text<₦>, :position<before>}},
     ),
-    NIO => (
+    NIO => %(
       :name<Nicaraguan Córdoba>,
-      :symbols(:default(:text<C$>, :position<before>)),
+      :symbols{:default{:text<C$>, :position<before>}},
     ),
-    NOK => (
+    NOK => %(
       :name<Norwegian Krone>,
-      :symbols(:default(:text< kr>, :position<after>)),
+      :symbols{:default{:text< kr>, :position<after>}},
     ),
-    NPR => (
+    NPR => %(
       :name<Nepalese Rupee>,
-      :symbols(:default(:text<Rs. >, :position<before>)),
+      :symbols{:default{:text<Rs. >, :position<before>}},
     ),
-    NZD => (
+    NZD => %(
       :name<New Zealand Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    OMR => (
+    OMR => %(
       :name<Omani Rial>,
     ),
-    PAB => (
+    PAB => %(
       :name<Panamanian Balboa>,
-      :symbols(:default(:text<B/. >, :position<before>)),
+      :symbols{:default{:text<B/. >, :position<before>}},
     ),
-    PEN => (
+    PEN => %(
       :name<Peruvian Nuevo Sol>,
-      :symbols(:default(:text<S/>, :position<before>)),
+      :symbols{:default{:text<S/>, :position<before>}},
     ),
-    PHP => (
+    PHP => %(
       :name<Philippine Peso>,
-      :symbols(:default(:text<₱>, :position<before>)),
+      :symbols{:default{:text<₱>, :position<before>}},
     ),
-    PKR => (
+    PKR => %(
       :name<Pakistani Rupee>,
-      :symbols(:default(:text<Rs. >, :position<before>)),
+      :symbols{:default{:text<Rs. >, :position<before>}},
     ),
-    PLN => (
+    PLN => %(
       :name<Polish Zloty>,
     ),
-    PYG => (
+    PYG => %(
       :name<Paraguayan Guarani>,
-      :symbols(:default(:text<₲>, :position<before>)),
+      :symbols{:default{:text<₲>, :position<before>}},
     ),
-    QAR => (
+    QAR => %(
       :name<Qatari Rial>,
     ),
-    RON => (
+    RON => %(
       :name<Romanian Leu>,
     ),
-    RSD => (
+    RSD => %(
       :name<Serbian Dinar>,
     ),
-    RUB => (
+    RUB => %(
       :name<Russian Ruble>,
-      :symbols(:default(:text< ₽>, :position<after>)),
+      :symbols{:default{:text< ₽>, :position<after>}},
     ),
-    SAR => (
+    SAR => %(
       :name<Saudi Riyal>,
     ),
-    SCR => (
+    SCR => %(
       :name<Seychellois Rupee>,
     ),
-    SEK => (
+    SEK => %(
       :name<Swedish Krona>,
-      :symbols(:default(:text< kr>, :position<after>)),
+      :symbols{:default{:text< kr>, :position<after>}},
     ),
-    SGD => (
+    SGD => %(
       :name<Singapore Dollar>,
-      :symbols(
-        :default(:text<$>, :position<before>),
-        :acronym(:text<S$>, :position<before>)
-      ),
+      :symbols{
+        :default{:text<$>, :position<before>},
+        :acronym{:text<S$>, :position<before>}
+      },
     ),
-    SVC => (
+    SVC => %(
       :name<Salvadoran Colón>,
-      :symbols(:default(:text<₡>, :position<before>)),
+      :symbols{:default{:text<₡>, :position<before>}},
     ),
-    THB => (
+    THB => %(
       :name<Thai Baht>
-      :symbols(:default(:text<฿>, :position<before>)),
+      :symbols{:default{:text<฿>, :position<before>}},
     ),
-    TND => (
+    TND => %(
       :name<Tunisian Dinar>,
     ),
-    TRY => (
-      :name<Turkish Lira>, 
-      :symbols(:default(:text<₺>, :position<before>)),
+    TRY => %(
+      :name<Turkish Lira>,
+      :symbols{:default{:text<₺>, :position<before>}},
     ),
-    TTD => (
+    TTD => %(
       :name<Trinidad and Tobago Dollar>,
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    TWD => (
+    TWD => %(
       :name<New Taiwan Dollar>,
-      :symbols(
-        :default(:text<$>, :position<before>),
-        :chinese(:text<元>, :position<before>),
-        :acronym(:text<NT$>, :position<before>)
-      ),
+      :symbols{
+        :default{:text<$>, :position<before>},
+        :chinese{:text<元>, :position<before>},
+        :acronym{:text<NT$>, :position<before>}
+      },
     ),
-    TZS => (
+    TZS => %(
       :name<Tanzanian Shilling>,
     ),
-    UAH => (
+    UAH => %(
       :name<Ukrainian Hryvnia>,
-      :symbols(:default(:text<₴>, :position<before>))
+      :symbols{:default{:text<₴>, :position<before>}}
     ),
-    UGX => (
+    UGX => %(
       :name<Ugandan Shilling>,
     ),
-    USD => (
-      :name<US Dollar>, 
-      :symbols(:default(:text<$>, :position<before>)),
+    USD => %(
+      :name<US Dollar>,
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    UYU => (
-      :name<Uruguayan Peso>, 
-      :symbols(:default(:text<$>, :position<before>)),
+    UYU => %(
+      :name<Uruguayan Peso>,
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    UZS => (
+    UZS => %(
       :name<Uzbekistani Som>
     ),
-    VES => (
+    VES => %(
       :name<Venezuelan Bolívar>
-      :symbols(:default(:text<Bs.F >, :position<before>)),
+      :symbols{:default{:text<Bs.F >, :position<before>}},
     ),
-    VND => (
+    VND => %(
       :name<Vietnamese Dong>,
-      :symbols(:default(:text< ₫>, :position<after>)) # do not remove the space before dong symbol
+      :symbols{:default{:text< ₫>, :position<after>}} # do not remove the space before dong symbol
     ),
-    WST => (
+    WST => %(
       :name<Samoan Tala>
-      :symbols(:default(:text<$>, :position<before>)),
+      :symbols{:default{:text<$>, :position<before>}},
     ),
-    XCD => (
+    XCD => %(
       :name<East Caribbean Dollar>,
       :symbols(:default(:text<$>, :position<before>)),
     ),
@@ -419,13 +420,19 @@ class Currency is export does Enumeration {
     ),
     ZAR => (
       :name<South African Rand>,
-      :symbols(:default(:text<R>, :position<before>))
+      :symbols{:default{:text<R>, :position<before>}}
     ),
   );
+
+  multi method CALL-ME($code where any(%currency-info.keys)) {
+    self.bless(key => $code, value => %currency-info{$code});
+  }
 
   method new($code where any(%currency-info.keys)) {
     self.bless(key => $code, value => %currency-info{$code});
   }
+
+  method keys { %currency-info.keys }
 
   multi method gist(::?CLASS:D:) { "$!key" }
   multi method Str { "$!key" }
@@ -447,27 +454,27 @@ class Money is export {
 
   multi method new(Str $input) {
     if $input ~~ /<money-regex>/ {
-      self.bless(amount => $<money-regex><money-amount>.Rat, currency => $<money-regex><currency-code>.Str);
+      self.bless(amount => $<money-regex><money-amount>.Rat, currency => Currency.new($<money-regex><currency-code>.Str));
     } else {
       fail { "Not a valid money string input" };
     }
   }
 
-  # multi method new(Rat :$amount, Currency :$currency) {
-  #   self.bless(:$amount, :$currency)
-  # }
+  multi method new(Rat :$amount, Currency :$currency) {
+    self.bless(:$amount, :$currency)
+  }
 
   multi method new(Rat $amount, Currency $currency) {
     self.bless(:$amount, :$currency)
   }
 
-  # multi method new(Rat :$amount, Str :$currency) {
-  #   self.bless(:$amount, :currency(Currency.new($currency)))
-  # }
-  #
-  # multi method new(Rat :$amount, Str :$currency) {
-  #   self.bless(:$amount, :currency(Currency.new($currency)))
-  # }
+  multi method new(Rat :$amount, Str :$currency) {
+    self.bless(:$amount, :currency(Currency.new($currency)))
+  }
+
+  multi method new(Rat $amount, Str $currency) {
+    self.bless(:$amount, :currency(Currency.new($currency)))
+  }
 
   multi method new(Int :$amount, Currency :$currency) {
     self.bless(:amount($amount / 1.0), :$currency)
@@ -477,25 +484,32 @@ class Money is export {
     self.bless(:amount($amount / 1.0), :$currency)
   }
 
+  multi method new(Int :$amount, Str :$currency) {
+    self.bless(:amount($amount / 1.0), :currency(Currency($currency)));
+  }
+
+  multi method new(Int $amount, Str $currency) {
+    self.bless(:amount($amount / 1.0), :currency(Currency($currency)));
+  }
+
   multi method abs { Money.new($!amount.abs, $!currency) }
 
   method gist { sprintf("%.2f %s", $!amount, $!currency.Str); }
 
   method Str { sprintf("%.2f %s", $!amount, $!currency.Str); }
 
-  method casual(Str :$symbol --> Str) {
+  method casual(Str :$using --> Str) {
     my $amount-str = sprintf("%.2f", $!amount);
-    my $config = $symbol || 'default';
-    
-    with $!currency<symbols>{$config} -> %symbol {
+    my $config = $using || 'default';
+
+    with $!currency.value{'symbols'}{$config} -> %symbol {
       given %symbol<position> {
         when 'before' { %symbol<text> ~ $amount-str }
-        when 'after'  { $amount-str ~ %symbol<text> }
+        when 'after'  { $amount-str ~~ %symbol<text> }
       }
     } else {
       $amount-str ~ " " ~ $!currency.Str; # we did our best to format it
     }
-
   }
 
   method is-negative { $!amount < 0.0 }
@@ -523,7 +537,7 @@ multi sub infix:<+>(Money $a, Money $b) is export {
 }
 
 multi sub infix:<+>(Money $a, Rat $b) is export {
-  Money.new(amount => $a.amount + $b, currency => $a.currency);
+Money.new(amount => $a.amount + $b, currency => $a.currency);
 }
 
 multi sub infix:<+>(Money $a, Int $b) is export {
@@ -534,7 +548,7 @@ multi sub infix:<->(Money $a, Money $b) is export {
   fail "Currencies must be the same in order to subtract. Got $($a.currency) and $($b.currency)" \
     if $a.currency ne $b.currency;
 
-  Money.new(amount => $a.amount - $b.amount, currency => $a.currency);
+    Money.new(amount => $a.amount - $b.amount, currency => $a.currency);
 }
 
 multi sub infix:<->(Money $a, Rat $b) is export {
@@ -553,7 +567,7 @@ multi sub infix:<cmp>(Money $a, Money $b) is export {
   fail "Currencies must be the same in order to compare. Got $($a.currency) and $($b.currency)" \
     if $a.currency ne $b.currency;
 
-  $a.amount cmp $b.amount
+    $a.amount cmp $b.amount
 }
 
 multi sub infix:<*>(Money $a, Rat $b) is export {
@@ -573,7 +587,7 @@ multi sub infix:</>(Money $a, Int $b) is export {
 }
 
 my package EXPORT::ALL {
-  for %Currencies::currency-info.keys -> $currency-code {
-    OUR::{'&postfix:<' ~ $currency-code ~ '>'} := sub (Rat:D $amount) { return Money.new($amount, Currency.new($currency-code)) };
+  for Currency.keys -> $currency-code {
+    OUR::{'&postfix:<' ~ $currency-code ~ '>'} := sub (Rat:D $amount) { return Money.new($amount, Currency($currency-code)) };
   }
 }

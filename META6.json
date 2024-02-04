@@ -1,18 +1,19 @@
 {
-  "auth": "zef:arunvickram",
-  "build-depends": [
-  ],
-  "depends": [
-  ],
-  "description": "A library to facilitate using monetary values in Raku",
   "name": "Moneys",
-  "source-url": "https://github.com/arunvickram/Moneys.git",
+  "description": "A library to facilitate using monetary values in Raku",
+  "version": "0.0.3",
+  "authors": [
+    "Arun <arunvickram@proton.me>"
+  ],
+  "auth": "zef:arunvickram",
+  "depends": [],
+  "build-depends": [],
+  "test-depends": [],
   "provides": {
-    "Moneys": "lib/Moneys.rakumod"
+    "Moneys": "lib/Moneys.rakumod",
+    "Moneys::Currency": "lib/Moneys/Currency.rakumod"
   },
-  "resources": [
-  ],
-  "test-depends": [
-  ],
-  "version": "0.0.3"
+  "resources": [],
+  "license": "Hippocratic-3.0",
+  "source-url": "https://github.com/arunvickram/Moneys.git"
 }
