@@ -537,7 +537,7 @@ multi sub infix:<+>(Money $a, Money $b) is export {
 }
 
 multi sub infix:<+>(Money $a, Rat $b) is export {
-Money.new(amount => $a.amount + $b, currency => $a.currency);
+  Money.new(amount => $a.amount + $b, currency => $a.currency);
 }
 
 multi sub infix:<+>(Money $a, Int $b) is export {
