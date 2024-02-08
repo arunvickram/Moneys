@@ -160,31 +160,39 @@ my regex money-regex {
 =head2 Moneys::Money
 
 class Money is export {
-    has Rat $.amount is required;
+    has FatRat $.amount is required;
     has Str $.currency is required;
 
     multi method new(Str $input) {
         if $input ~~ /<money-regex>/ {
-            self.bless(amount => $<money-regex><money-amount>.Rat, currency => $<money-regex><currency-code>.Str);
+            self.bless(amount => $<money-regex><money-amount>.FatRat, currency => $<money-regex><currency-code>.Str);
         } else {
             fail { "Not a valid money string input" };
         }
     }
 
+    multi method new(FatRat :$amount, Str :$currency) {
+        self.bless(:$amount, :$currency);
+    }
+
+    multi method new(FatRat $amount, Str $currency) {
+        self.bless(:$amount, :$currency);
+    }
+
     multi method new(Rat :$amount, Str :$currency) {
-        self.bless(:$amount, :$currency)
+        self.bless(:amount($amount.FatRat), :$currency)
     }
 
     multi method new(Rat $amount, Str $currency) {
-        self.bless(:$amount, :$currency)
+        self.bless(:amount($amount.FatRat), :$currency)
     }
 
     multi method new(Int :$amount, Str :$currency) {
-        self.bless(:amount($amount / 1.0), $currency)
+        self.bless(:amount($amount.FatRat), $currency)
     }
 
     multi method new(Int $amount, Str $currency) {
-        self.bless(:amount($amount / 1.0), :$currency)
+        self.bless(:amount($amount.FatRat), :$currency)
     }
 
     multi method abs {
@@ -210,7 +218,10 @@ class Money is export {
 
 multi sub money(Str $input) is export {
     if $input ~~ /<money-regex>/ {
-        Money.new(amount => $<money-regex><money-amount>.Rat, currency => $<money-regex><currency-code>.Str);
+        Money.new(
+          amount => $<money-regex><money-amount>.FatRat,
+          currency => $<money-regex><currency-code>.Str
+        );
     } else {
         fail { "Not a valid money string input" };
     }
@@ -220,38 +231,42 @@ multi sub money(Rat $amount, Str $currency --> Money) is export {
     Money.new(:$amount, :$currency)
 }
 
-multi sub infix:<+>(Money $a, Money $b) is export {
+multi sub infix:«==»(Money:D $a, Money:D $b) is export {
+    $a.amount == $b.amount && $a.currency eq $b.currency
+}
+
+multi sub infix:«+»(Money $a, Money $b) is export {
     fail "Currencies must be the same in order to add value. Got $($a.currency) and $($b.currency)" \
         if $a.currency ne $b.currency;
 
     Money.new(amount => $a.amount + $b.amount, currency => $a.currency);
 }
 
-multi sub infix:<+>(Money $a, Rat $b) is export {
+multi sub infix:«+»(Money $a, Rat $b) is export {
     Money.new(amount => $a.amount + $b, currency => $a.currency);
 }
 
-multi sub infix:<+>(Money $a, Int $b) is export {
+multi sub infix:«+»(Money $a, Int $b) is export {
     Money.new(amount => $a.amount + $b, currency => $a.currency);
 }
 
-multi sub infix:<->(Money $a, Money $b) is export {
+multi sub infix:«-»(Money $a, Money $b) is export {
     fail "Currencies must be the same in order to subtract. Got $($a.currency) and $($b.currency)" \
         if $a.currency ne $b.currency;
 
     Money.new(amount => $a.amount - $b.amount, currency => $a.currency);
 }
 
-multi sub infix:<->(Money $a, Rat $b) is export {
+multi sub infix:«-»(Money $a, Rat $b) is export {
     Money.new(amount => $a.amount - $b, currency => $a.currency);
 }
 
-multi sub infix:<->(Money $a, Int $b) is export {
+multi sub infix:«-»(Money $a, Int $b) is export {
     Money.new(amount => $a.amount - $b, currency => $a.currency);
 }
 
-multi sub prefix:<->(Money $a) is export {
-    Money.new(-$a.amount, $a.currency)
+multi sub prefix:«-»(Money $a) is export {
+    Money.new(-$a.amount, $a.currency);
 }
 
 multi sub infix:<cmp>(Money $a, Money $b) is export {
@@ -261,19 +276,19 @@ multi sub infix:<cmp>(Money $a, Money $b) is export {
     $a.amount cmp $b.amount
 }
 
-multi sub infix:<*>(Money $a, Rat $b) is export {
+multi sub infix:«*»(Money $a, Rat $b) is export {
     Money.new(amount => $a.amount * $b, currency => $a.currency);
 }
 
-multi sub infix:<*>(Money $a, Int $b) is export {
+multi sub infix:«*»(Money $a, Int $b) is export {
     Money.new(amount => $a.amount * $b, currency => $a.currency);
 }
 
-multi sub infix:</>(Money $a, Rat $b) is export {
+multi sub infix:«/»(Money $a, Rat $b) is export {
     Money.new(amount => $a.amount / $b, currency => $a.currency);
 }
 
-multi sub infix:</>(Money $a, Int $b) is export {
+multi sub infix:«/»(Money $a, Int $b) is export {
     Money.new(amount => $a.amount / $b, currency => $a.currency);
 }
 

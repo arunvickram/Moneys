@@ -27,5 +27,11 @@ ok "$m3" eq '1.00 INR', "gist/Str properly produces nice output, produced $m3";
 ok "$m5" eq '$50.00 CAD', "postfix constructor creates money";
 
 ok Money.new('$1.00 USD') eqv Money.new(1.00, 'USD'), "regex doesn't properly parse decimal values $(Money.new('$1.00 USD'))";
+ok money('$1.00 USD') eqv Money.new(1.00, 'USD'), "regex doesn't properly parse decimal values $(Money.new('$1.00 USD'))";
+
+ok Money.new('$1.00 USD') == Money.new(1.00, 'USD'), "`==` failed";
+
+ok (1.0USD).is-positive, "is-positive works";
+ok (-1.0USD).is-negative, "is-negative works";
 
 done-testing;
