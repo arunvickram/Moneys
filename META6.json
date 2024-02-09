@@ -1,7 +1,7 @@
 {
   "name": "Moneys",
   "description": "A library to facilitate using monetary values in Raku",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "authors": [
     "Arun <arunvickram@proton.me>"
   ],
